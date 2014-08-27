@@ -30,6 +30,26 @@ Sum();
 Test();
 GetDB();
 
+stringWithEnter(__DIR__);
+stringWithEnter(__FILE__);
+define("TEDDY","Teddy Long");
+stringWithEnter("TEDDY");
+
+
+$onePerson = new Person();
+$onePerson->_construct("Teddy");
+$onePerson->getSelf();
+stringWithEnter($onePerson::THISISCONST);
+
+$myArray = array(1,2,3,4);
+foreach($myArray as $value)
+{
+    settype($value,"string");
+    stringWithEnter($value);
+}
+
+
+
 function stringWithEnter ($string)
 {
     echo ("<br/>");
@@ -88,5 +108,26 @@ function GetDB()
     }
     echo (json_encode($results));
     mysql_free_result($result);
+
+}
+
+class Person
+{
+    private $name;
+    private $age;
+    private $address;
+    private $phone;
+    const THISISCONST = 'Nothing';
+    public function _construct($name)
+    {
+        $this->name = $name;
+    }
+
+
+    function getSelf()
+    {
+        stringWithEnter($this->name);
+    }
+
 
 }
